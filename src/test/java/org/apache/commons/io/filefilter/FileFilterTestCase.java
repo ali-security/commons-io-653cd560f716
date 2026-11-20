@@ -934,7 +934,7 @@ public class FileFilterTestCase {
 
     @Test
     public void testCanExecute() throws Exception {
-        assumeTrue(SystemUtils.IS_OS_WINDOWS);
+        assumeTrue(SystemUtils.IS_OS_WINDOWS, "testCanExecute runs only on Windows (setExecutable(false) is not honoured for the file owner on POSIX)");
         final File executableFile = File.createTempFile(getClass().getSimpleName(), ".temp");
         try {
             try (final BufferedOutputStream output = new BufferedOutputStream(new FileOutputStream(executableFile))) {
